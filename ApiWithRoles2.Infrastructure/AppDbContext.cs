@@ -1,17 +1,24 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ApiWithRoles2.Infrastructure.Configurations;
+using ApiWithRoles2.Infrastructure.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Principal;
 
 namespace ApiWithRoles2.Infrastructure
 {
-    public class AppDbContext : IdentityDbContext<>
+    public class AppDbContext : IdentityDbContext<UserEntity, IdentityRole<long>, long>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
         }
-        public DbSet<YourEntity> YourEntities { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfiguration(new UserConfiguration());
+        }
+
     }
-    {
-    }
+
 }
