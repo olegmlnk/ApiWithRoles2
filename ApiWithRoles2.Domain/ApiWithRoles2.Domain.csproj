@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Interfaces\" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="9.0.4" />
   </ItemGroup>
 
 </Project>

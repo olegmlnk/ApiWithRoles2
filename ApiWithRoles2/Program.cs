@@ -20,7 +20,7 @@ namespace ApiWithRoles2
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "My API",
+                    Title = "ApiWithRoles",
                     Version = "v1"
                 });
             });
@@ -59,11 +59,7 @@ namespace ApiWithRoles2
             {
                 app.MapOpenApi();
                 app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "AlchemyAPI V1");
-                    c.RoutePrefix = "";
-                });
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();

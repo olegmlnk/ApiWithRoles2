@@ -12,12 +12,13 @@ namespace ApiWithRoles2.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register()
         {
-
+            throw new NotImplementedException();
         }
 
+        [HttpPost("login")]
         public async Task<IActionResult> Login()
         {
-
+            throw new NotImplementedException();
         }
 
     }

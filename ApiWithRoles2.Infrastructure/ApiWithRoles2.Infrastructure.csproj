@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\ApiWithRoles2.Domain\ApiWithRoles2.Domain.csproj" />
   </ItemGroup>
 
 </Project>
