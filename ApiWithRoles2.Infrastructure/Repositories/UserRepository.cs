@@ -1,6 +1,7 @@
 ﻿using ApiWithRoles2.Domain.Interfaces;
 using ApiWithRoles2.Domain.Models;
 using ApiWithRoles2.Infrastructure.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiWithRoles2.Infrastructure.Repositories
 {
@@ -42,22 +43,49 @@ namespace ApiWithRoles2.Infrastructure.Repositories
 
         public Task<bool> UserExistsByEmail(string email)
         {
-            throw new NotImplementedException();
+            var userEntity = _appDbContext.Users.FirstOrDefaultAsync(x => x.Email == email); 
+
+            if (userEntity == null)
+            {
+                return Task.FromResult(false);
+            }
+
+            return Task.FromResult(true);
         }
 
         public Task<bool> UserExistsByUsername(string username)
         {
-            throw new NotImplementedException();
+            var userEntity = _appDbContext.Users.FirstOrDefaultAsync(x => x.UserName == username);
+
+            if (userEntity == null)
+            {
+                return Task.FromResult(false);
+            }
+
+            return Task.FromResult(true);
         }
 
         public Task<IEnumerable<ApplicationUser>> GetAllUsers()
         {
+            //var users = _appDbContext.Users
+            //    .Select(x => new ApplicationUser
+            //    {
+            //        Id = x.Id,
+            //        UserName = x.UserName,
+            //        Email = x.Email,
+            //        PasswordHash = x.PasswordHash
+            //    });
+
             throw new NotImplementedException();
         }
 
-        public Task<ApplicationUser?> GetUserByEmail(string email)
+        public async Task<ApplicationUser?> GetUserByEmail(string email)
         {
-            throw new NotImplementedException();
+            var userEntity = await _appDbContext.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Email == email) ?? throw new Exception();
+
+            
         }
 
         public Task<ApplicationUser?> GetUserById(long id)
