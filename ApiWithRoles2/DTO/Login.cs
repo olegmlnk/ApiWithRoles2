@@ -1,4 +1,4 @@
-﻿namespace ApiWithRoles2.Application.DTO
+﻿namespace ApiWithRoles2.DTO
 {
     public class Login
     {
